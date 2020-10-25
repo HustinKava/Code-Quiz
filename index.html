@@ -6,15 +6,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Code Quiz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>	
-
-<header>
-
-</header>
-
 <body>
+    <div class='start_highscore_buttons'>
+        <!--Start Quiz button-->
+        <div class='start_button'><button>Start Quiz</button></div>
+        <!--View High Scores button-->
+        <div class='highscore_button'><button>High Score</button></div>
+    </div>
+    <!--Information box-->
+    <div class='information_box'>
+        <div class='information_title'>
+            <span>Information regarding this Quiz</span>
+        </div>    
+        <div class='information_text'>
+            <div class='information_text_content'>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score time by ten seconds!</div>
+        </div>
+        <div class='buttons'>
+            <button class='quit'>Exit Quiz</button>
+            <button class='continue'>Continue</button>
+        </div>
+    </div>
 
+    <!--Quiz Box-->
+    <!--Header contains quiz title and the time remaining-->
+    <div class='quiz_box'>        
+        <header>
+            <div class='quiz_title'>Code Quiz</div>
+            <div class='timer'>
+                <div class='time_text'>Time Left =</div>    
+            </div>
+        </header>
+
+
+        <!--This section contains the question that is asked and the responses to choose from-->
+        <!--Under the options is an icon that will appear if the answer is correct or false-->
+        <section>
+            <div class='question_text'>
+                <span>Commonly used data types DO NOT include:</span>                
+            </div>
+            <div class='question_option_list'>
+                <div class='option'>
+                    <p>Strings</p>
+                    <div class='icon_cross'><i class="fas fa-times"></i></div>
+                </div>
+                <div class='option'>
+                    <p>Booleans</p>
+                    <div class='icon_cross'><i class="fas fa-times"></i></div>
+                </div>
+                <div class='option'>
+                    <p>Alerts</p>
+                    <div class='icon_tick'><i class="fas fa-check"></i></div>
+                </div>
+                <div class='option'>
+                    <p>Numbers</p>
+                    <div class='icon_cross'><i class="fas fa-times"></i></div>
+                </div>
+            </div>
+        </section>
+
+
+        <!--Quiz Box Footer-->
+        <!--The footer contains what question you are on and the next button-->
+        <footer>
+            <div class='total_questions'>
+                <span><p>1</p>of<p>5</p>Questions</span>
+            </div>
+            <button class='next_button'>Next</button>
+        </footer>
+    </div>
+
+    <!--Results Box-->
+    <div class="result_box">
+        <div class='icon'>
+            <i class='fas fa-laptop-code'></i>
+        </div>
+        <div class="complete_text">
+            You have completed the quiz!
+        </div>
+        <div class="score_text">
+            You final score is:
+        </div>
+        <div class="initials_text">
+            Please enter your initials:                                    
+        </div>
+        <div class="buttons">
+            <button class="submit">Submit</button>
+        </div>
+    </div>
 
     <script src="assets/javascript/script.js"></script>
 </body>

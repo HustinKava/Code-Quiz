@@ -1,0 +1,348 @@
+/*Imported font*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+/*Styling for the whole page*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+/*Page background color*/
+body {
+    background: #007bff;
+}
+
+/*----------------------------------------------------------------------------------------------------------*/
+
+.start_highscore_buttons {
+    display: flex;
+    position: absolute; /*Absolute positions do not take up space because they have been taken out of the flow.*/    
+    top: 50%; /*Moves the button down*/    
+    left: 50%; /*Moves the button right*/    
+    transform: translate(-50%, -50%); /*Moves element along the X axis and Y axis, -50% is left and -50% is up*/
+}
+
+/*Positioning the start button and high score button*/
+.start_button button,
+.highscore_button button {
+    margin-left: 50px; /*Adds a space between the two buttons*/
+}
+
+/*Styling for the start button*/
+.start_button button,
+.highscore_button button {
+    font-size: 25px;
+    font-weight: 500;
+    color: #007bff;    
+    padding: 15px 30px; /*Padding Y and padding X*/
+    outline: none;
+    border: none;    
+    border-radius: 5px; /*Creates rounded edges*/
+    background-color: #fff;
+    cursor: pointer; /*Changes the cursor when mouse hovers over button*/
+}
+
+.start_button button:hover {
+    color: #0263ca;
+    border-color: #0263ca;
+}
+
+.highscore_button button:hover {
+    color: #0263ca;
+    border-color: #0263ca;
+}
+
+/*----------------------------------------------------------------------------------------------------------*/
+
+/*Positioning of information box, quiz box and result box*/
+.information_box,
+.quiz_box,
+.result_box {    
+    position: absolute; /*Absolute positions do not take up space because they have been taken out of the flow.*/    
+    top: 50%; /*Moves the button down*/    
+    left: 50%; /*Moves the button right*/    
+    transform: translate(-50%, -50%); /*Moves element along the X axis and Y axis, -50% is left and -50% is up*/
+}
+
+/*----------------------------------------------------------------------------------------------------------*/
+
+/*Information box styling*/
+.information_box {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: 540px;
+    background-color: #fff;    
+    border-radius: 5px; /*Creates rounded edges*/
+}
+
+/*Positioning information title within the information box*/
+.information_box .information_title {    
+    height: 60px; /*Creates space between the title and content*/
+    width: 100%;
+    border-bottom: 1px solid lightgrey; /*Creates a line at the bottom*/
+    display: flex; /*Fills free space and also prevents overflow*/
+    align-items: center; /*Pushes the vertically in the middle of it's section*/
+    padding-left: 25%; /*Pushes the title to the right*/
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/*Positioning information content within the information box*/
+.information_box .information_text {
+    padding: 15px 35px; /*Padding Y and padding X*/
+}
+
+/*Positioning information text content within information text which is within the information box*/
+.information_box .information_text .information_text_content {
+    margin: 5px 0; /*Adds vertical space between text and margin*/
+    font-size: 17px;
+}
+
+/*Positioning the buttons within the information box*/
+.information_box .buttons {
+    height: 60px; /*Moves the buttons up from the bottom*/
+    display: flex;
+    align-items: center;
+    justify-content: center; /*Align the buttons so they are positioned in the center*/
+    border-top: 1px solid lightgrey;
+}
+
+/*Styling for the buttons*/
+.information_box .buttons button {
+    margin: 0 5px; /*Provides space between the exit quiz and continue buttons*/
+    height: 40px; /*Increases the button size height*/
+    width: 100px; /*Widens the button size*/
+    border: 1px solid #007bff;
+    border-radius: 5px; /*Creates rounded edges*/
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/*Styling for the button font*/
+.buttons button.quit {
+    color: #007bff;    
+}
+
+/*Styling for when the button is hovered over with mouse*/
+.buttons button.quit:hover {
+    color: #0263ca;  
+    border: 1px solid #0263ca;  
+}
+
+
+.buttons button.continue {
+    color: #007bff; 
+}
+
+.buttons button.continue:hover {
+    color: #0263ca; 
+    border: 1px solid #0263ca;  
+}   
+
+/*Quiz Box styling*/
+.quiz_box {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: 550px;
+    background: #fff;
+    border-radius: 5px;
+}
+
+/*----------------------------------------------------------------------------------------------------------*/
+
+/*Styling for the quiz box header*/
+.quiz_box header {
+    position: relative;
+    z-index: 99; /*z-index specifies the stack order of an element, an element with a higher stack number is always in front of an element with a lower stack number*/
+    height: 70px;
+    padding: 0 30px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px 5px;
+    border-bottom:  1px solid lightgrey;
+}
+
+/*Styling for the quiz box title (code quiz)*/
+.quiz_box header .quiz_title {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/*Styling for the quiz box timer (time left)*/
+.quiz_box header .timer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 145px;
+    height: 45px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    padding: 0 8px;
+}
+
+.quiz_box header .timer .time_text {
+    font-weight: 400;
+    font-size: 17px;
+    user-select: none; /*Cannot select the time left with mouse*/
+}
+
+/*----------------------------------------------------------------------------------------------------------*/
+
+/*Styling for the questions*/
+.quiz_box section {
+    padding: 25px 30px 20px 30px;   
+
+}
+
+.quiz_box section .question_text {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.quiz_box section .question_option_list {
+    padding: 20px 0;
+    display: block; /*Displays an element as a block element, it stats on a new line, and takes up the whole width*/
+}
+
+.quiz_box section .question_option_list .option {
+    background: aliceblue; 
+    border: 1px solid #84c5fe; /*Creates a border around the 4 options to choose from*/
+    border-radius: 5px;
+    padding: 8px 15px; /*Padding for vertical and horizontal space*/
+    margin-bottom: 15px; /*Creates a space between the option boxes, so that they are separated*/
+    display: flex; /*Puts the content on the same line*/
+    align-items: center;
+    justify-content: space-between; /*Pushes the icons all the way to the right*/
+    cursor: pointer;
+}
+
+.question_option_list .option:hover {
+    color: #0263ca;
+}
+
+.question_option_list .option:last-child {
+    margin-bottom: 0px;
+}
+
+/*----------------------------------------------------------------------------------------------------------*/
+
+/*Styling for answers*/
+.question_option_list .option .icon {
+    height: 26px;
+    width: 26px;
+    pointer-events: none; /*I want the icon to simply be a display*/
+}
+
+/*Styling for color if answer is correct*/
+.question_option_list .option .icon_tick {
+    color: #23903c;
+}
+
+/*Styling for color if answer is incorrect*/
+.question_option_list .option .icon_cross {
+    color: #a4283a;
+}
+
+/*----------------------------------------------------------------------------------------------------------*/
+
+/*Styling for quiz box footer*/
+.quiz_box footer {
+    height: 60px;
+    width: 100%;
+    padding: 0 30px; /*Padding that moves towards the right*/
+    display: flex; /*Puts the content and button on the same line*/
+    align-items: center;
+    justify-content: space-between; /*Pushes the next button to the right*/
+}
+
+.quiz_box footer .total_questions span {
+    display: flex; /*Puts the text on the same line*/
+    user-select: none; /*Since it is just a display it does not need any mouse interactions*/
+}
+
+.quiz_box footer .total_questions p {
+    font-weight: 500;
+    padding: 0 5px; /*Puts spaces between the text*/
+}
+
+footer .next_button {
+    height: 40px;
+    padding: 0 13px;
+    font-size: 18px;
+    font-weight: 400;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    color: #007bff;
+    cursor: pointer;
+}
+
+footer .next_button:hover {
+    border: 1px solid #0263ca;
+    color: #0263ca;
+}
+
+/*----------------------------------------------------------------------------------------------------------*/
+
+/*Results box styling*/
+.result_box {
+    background: #fff;
+    width: 480px;
+    padding: 25px 30px;
+    border-radius: 5px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.9);
+}
+
+.result_box .icon {
+    font-size: 100px;
+    color: #007bff;
+    margin-bottom: 10px;
+    border-bottom: 1px solid lightgrey;
+}
+
+.result_box .complete_text {
+    font-size: 20px;
+    font-weight: 500;
+    margin:  20px 0;
+}
+
+.result_box .score_text {
+    font-weight: 500;
+    margin: 20px 0;
+}
+
+.result_box .initials_text {
+    font-weight: 500;
+    margin: 20px 0;
+}
+
+
+.buttons button.submit {
+    margin: 50px 0;
+    height: 40px;
+    padding: 0 13px;
+    font-size: 18px;
+    font-weight: 400;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    color: #007bff;
+    cursor: pointer;
+}
+
+.buttons button.submit:hover {
+    border: 1px solid #0263ca;
+    color: #0263ca;
+}
