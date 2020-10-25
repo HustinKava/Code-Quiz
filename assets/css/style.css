@@ -55,10 +55,11 @@ body {
 
 /*----------------------------------------------------------------------------------------------------------*/
 
-/*Positioning of information box, quiz box and result box*/
+/*Positioning of information box, quiz box, result box and high score box*/
 .information_box,
 .quiz_box,
-.result_box {    
+.result_box,
+.highscore_box {    
     position: absolute; /*Absolute positions do not take up space because they have been taken out of the flow.*/    
     top: 50%; /*Moves the button down*/    
     left: 50%; /*Moves the button right*/    
@@ -292,6 +293,9 @@ footer .next_button:hover {
 
 /*Results box styling*/
 .result_box {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.9);
     background: #fff;
     width: 480px;
     padding: 25px 30px;
@@ -301,9 +305,6 @@ footer .next_button:hover {
     align-items: center;
     flex-direction: column;
     justify-content: space-between;
-    opacity: 0;
-    pointer-events: none;
-    transform: translate(-50%, -50%) scale(0.9);
 }
 
 .result_box .icon {
@@ -343,6 +344,46 @@ footer .next_button:hover {
 }
 
 .buttons button.submit:hover {
+    border: 1px solid #0263ca;
+    color: #0263ca;
+}
+
+/*----------------------------------------------------------------------------------------------------------*/
+
+.highscore_box {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.9);
+    background: #fff;
+    width: 480px;
+    padding: 25px 30px;
+    border-radius: 5px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: 500;
+    margin:  20px 0;
+}
+
+.buttons button.clear_button, button.return_button {
+    margin: 50px 0;
+    height: 40px;
+    padding: 0 13px;
+    font-size: 18px;
+    font-weight: 400;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    color: #007bff;
+    cursor: pointer;
+}
+
+.buttons button.clear_button:hover, button.return_button:hover {
     border: 1px solid #0263ca;
     color: #0263ca;
 }
