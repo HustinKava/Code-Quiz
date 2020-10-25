@@ -68,6 +68,22 @@ body {
 
 /*----------------------------------------------------------------------------------------------------------*/
 
+/*Styling for setting elements to active*/
+
+.information_box.active_information_box,
+.highscore_box.active_highscore_box,
+.quiz_box.active_quiz_box {
+    z-index: 5;
+    opacity: 1; /*1 becomes not transparent*/
+    pointer-events: auto; /*Restores default functionality*/
+    transform: translate(-50%, -50%) scale(1);
+}
+
+
+
+ 
+/*----------------------------------------------------------------------------------------------------------*/
+
 /*Information box styling*/
 .information_box {
     opacity: 0;
@@ -124,22 +140,22 @@ body {
 }
 
 /*Styling for the button font*/
-.buttons button.quit {
+.buttons button.quit_button {
     color: #007bff;    
 }
 
 /*Styling for when the button is hovered over with mouse*/
-.buttons button.quit:hover {
+.buttons button.quit_button:hover {
     color: #0263ca;  
     border: 1px solid #0263ca;  
 }
 
 
-.buttons button.continue {
+.buttons button.continue_button {
     color: #007bff; 
 }
 
-.buttons button.continue:hover {
+.buttons button.continue_button:hover {
     color: #0263ca; 
     border: 1px solid #0263ca;  
 }   
