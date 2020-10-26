@@ -11,12 +11,20 @@ const question_counter = quiz_box.querySelector('.total_questions');
 const time_counter = quiz_box.querySelector('.timer .timer_seconds')
 
 const result_box = document.querySelector('.result_box');
+const score_text = document.querySelector('.score_text');
 const submit_button = document.querySelector('.buttons .submit_button')
 
 const highscore_button = document.querySelector('.highscore_button button')
 const highscore_box = document.querySelector('.highscore_box')
 
 const return_button = highscore_box.querySelector('.buttons .return_button')
+
+//Global variables
+let question_count = 0; //Starts at question 0 which is question 1 because we are using arrays
+let question_number = 1;//Page count starts at 1
+let counter;//Holds the timer count
+let time = 100;//Hard coded the time to start from 100 seconds
+let score;//Holds the final score 
 
 //If Start Quiz is clicked
 //classList.add() behaves like a toggle for css
@@ -40,20 +48,13 @@ continue_button.onclick = () => {
     quiz_box.classList.add('active_quiz_box');//Show quiz box
     showQuestions(0);//showQuestions function executes
     questionPageNumber(1);//question_page_number function executes
-    startTimer(100);//start_timer function executes
+    startTimer();//start_timer function executes
 }
 
 //If Return button is clicked
 return_button.onclick = () => {
     highscore_box.classList.remove('active_highscore_box');//Hide highscore box
 }
-
-//Global variables
-let question_count = 0; //Starts at question 0 which is question 1 because we are using arrays
-let question_number = 1;//Page count starts at 1
-let counter;//Holds the timer count
-let wrong_answer;
-let time;
 
 //If Next button is clicked
 next_button.onclick = () => {
@@ -66,7 +67,9 @@ next_button.onclick = () => {
         console.log('Questions Completed');
         showResultBox();
         clearInterval(counter);
-        console.log(counter)
+        complete = true;
+        score = time;
+        console.log(score);
     }
 }
 
@@ -107,29 +110,32 @@ let optionSelected = (answer) => {
     } else {
         answer.classList.add('incorrect');//If the answer is incorrect the option text will be red
         answer.insertAdjacentHTML("beforeend", cross_icon);
-        wrong_answer = true;
-        console.log(wrong_answer);
+        time -= 10;
+        console.log(typeof time);//Show if it is a number, bolean or string ect..
     }
 }
 
+//Function to show the result box once the quiz has been completed
 let showResultBox = () => {
     information_box.classList.remove('active_information_box');//Hide the information box
     quiz_box.classList.remove('active_quiz_box');//Hide quiz box
     result_box.classList.add('active_result_box');//Show result box
+    score_text.innerText = 'Your final score is:' + time;
 }
 
 //Function to start the timer from 100 seconds
-function startTimer(time) {
+function startTimer() {
     counter = setInterval(timer, 1000);
     function timer() {
         time_counter.textContent = time;//Timer will display in the HTML element .timer_seconds
         time--;//Timer counts backwards
+        
+        
         if (time < 0) {//If time reaches zero, it will hold the value of 0
             clearInterval(counter);
-            time_counter.textContent = 0;
-        } if (wrong_answer === true) {
-            time -= 10;            
-            console.log(time)
+            time_counter.textContent = 0;//Timer would show 0 once reached
+            quiz_box.classList.remove('active_quiz_box');//Hide quiz box
+            result_box.classList.add('active_result_box');//Show result box
         }
     }   
 }
