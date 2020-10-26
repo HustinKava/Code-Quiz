@@ -391,8 +391,19 @@ footer .next_button:hover {
     justify-content: space-between;
 }
 
+.name_score {
+    width: 400px;
+    background: aliceblue; 
+    border: 1px solid #84c5fe; /*Creates a border around the 4 options to choose from*/
+    border-radius: 5px;
+    padding: 8px 15px; /*Padding for vertical and horizontal space*/
+    margin-bottom: 10px; /*Creates a space between the option boxes, so that they are separated*/
+    justify-content: space-between; /*Pushes the icons all the way to the right*/
+    display: flex;
+}
+
 h2 {
-    font-size: 20px;
+    font-size: 30px;
     font-weight: 500;
     margin:  20px 0;
 }
