@@ -8,6 +8,7 @@ const continue_button = information_box.querySelector('.buttons .continue_button
 const quiz_box = document.querySelector('.quiz_box')
 const next_button = quiz_box.querySelector('.next_button');
 const question_counter = quiz_box.querySelector('.total_questions');
+const time_counter = quiz_box.querySelector('.timer .timer_seconds')
 
 const highscore_button = document.querySelector('.highscore_button button')
 const highscore_box = document.querySelector('.highscore_box')
@@ -34,8 +35,9 @@ quit_button.onclick = () => {
 continue_button.onclick = () => {
     information_box.classList.remove('active_information_box');//Hide the information box
     quiz_box.classList.add('active_quiz_box');//Show quiz box
-    showQuestions(0);
-    question_page_number(1);
+    showQuestions(0);//showQuestions function executes
+    questionPageNumber(1);//question_page_number function executes
+    startTimer(100);//start_timer function executes
 }
 
 //If Return button is clicked
@@ -45,6 +47,8 @@ return_button.onclick = () => {
 
 let question_count = 0; //Starts at question 0 which is question 1 because we are using arrays
 let question_number = 1;//Page count starts at 1
+let counter;
+let penalty = 10;
 
 //If Next button is clicked
 next_button.onclick = () => {
@@ -52,7 +56,7 @@ next_button.onclick = () => {
         question_count++;//This will increase by 1 to cycle through our questions
         question_number++;//This will increase by 1 to cycle through the page numbers
         showQuestions(question_count);
-        question_page_number(question_number);
+        questionPageNumber(question_number);
     } else {
         console.log('Questions Completed');
     }
@@ -99,10 +103,20 @@ let optionSelected = (answer) => {
     }
 }
 
+//Function to start the timer from 100 seconds
+function startTimer(time) {
+    counter = setInterval(timer, 1000);
+    function timer() {
+        time_counter.textContent = time;//Timer will display in the HTML element .timer_seconds
+        time--;//Timer counts backwards
+    }
+}
+
 
 //Creating a function that will show you what question you are on out of 5
-let question_page_number = (index) => {
+let questionPageNumber = (index) => {
     const question_counter = quiz_box.querySelector('.total_questions');
     let question_counter_tag = '<span><p>'+ index +'</p>of<p>'+ questions.length +'</p>Questions</span>'
     question_counter.innerHTML = question_counter_tag;
 }
+
