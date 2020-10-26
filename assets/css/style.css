@@ -299,6 +299,7 @@ body {
 }
 
 footer .next_button {
+    display: none;
     height: 40px;
     padding: 0 13px;
     font-size: 18px;

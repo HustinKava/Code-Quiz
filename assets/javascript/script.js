@@ -63,6 +63,7 @@ next_button.onclick = () => {
         question_number++;//This will increase by 1 to cycle through the page numbers
         showQuestions(question_count);
         questionPageNumber(question_number);
+        next_button.style.display = 'none';//This will hide the next button until the correct answer is chosen
     } else {
         console.log('Questions Completed');
         showResultBox();
@@ -104,6 +105,7 @@ let optionSelected = (answer) => {
     user_answer = answer.textContent;
     let correct_answer = questions[question_count].answer;//Setting the answer equal to the answers located in questions.js file
     if (user_answer == correct_answer) {
+        next_button.style.display = 'block';//Once the user selects the correct answer the next button will show
         answer.classList.add('correct')//If the answer is correct the option text will be green
         answer.insertAdjacentHTML("beforeend", tick_icon);
         console.log('That is correct');
