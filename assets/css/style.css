@@ -267,6 +267,14 @@ body {
     color: #a4283a;
 }
 
+.question_option_list .option.correct {
+    color: #23903c;
+}
+
+.question_option_list .option.incorrect {
+    color: #a4283a;
+}
+
 /*----------------------------------------------------------------------------------------------------------*/
 
 /*Styling for quiz box footer*/
