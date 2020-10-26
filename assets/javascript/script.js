@@ -1,23 +1,28 @@
 //Getting all required elements
-const start_button = document.querySelector('.start_button button')
-const information_box = document.querySelector('.information_box')
+const start_button = document.querySelector('.start_button button');
 
-const quit_button = information_box.querySelector('.buttons .quit_button')
-const continue_button = information_box.querySelector('.buttons .continue_button')
+const information_box = document.querySelector('.information_box');
+const quit_button = information_box.querySelector('.buttons .quit_button');
+const continue_button = information_box.querySelector('.buttons .continue_button');
 
-const quiz_box = document.querySelector('.quiz_box')
+const quiz_box = document.querySelector('.quiz_box');
 const next_button = quiz_box.querySelector('.next_button');
 const question_counter = quiz_box.querySelector('.total_questions');
-const time_counter = quiz_box.querySelector('.timer .timer_seconds')
+const time_counter = quiz_box.querySelector('.timer .timer_seconds');
 
 const result_box = document.querySelector('.result_box');
 const score_text = document.querySelector('.score_text');
-const submit_button = document.querySelector('.buttons .submit_button')
+const input_text = document.querySelector('.input_text');
+const submit_button = document.querySelector('.buttons .submit_button');
 
-const highscore_button = document.querySelector('.highscore_button button')
-const highscore_box = document.querySelector('.highscore_box')
 
-const return_button = highscore_box.querySelector('.buttons .return_button')
+const highscore_box = document.querySelector('.highscore_box');
+const highscore_button = document.querySelector('.highscore_button button');
+const return_button = highscore_box.querySelector('.buttons .return_button');
+const clear_button = highscore_box.querySelector('.buttons .clear_button');
+const name_score = document.querySelector('.name_score');
+const hs_name = document.querySelector('.hs_name');
+const hs_score = document.querySelector('.hs_score');
 
 //Global variables
 let question_count = 0; //Starts at question 0 which is question 1 because we are using arrays
@@ -25,6 +30,9 @@ let question_number = 1;//Page count starts at 1
 let counter;//Holds the timer count
 let time = 100;//Hard coded the time to start from 100 seconds
 let score;//Holds the final score 
+let username;//Holds the username
+
+
 
 //If Start Quiz is clicked
 //classList.add() behaves like a toggle for css
@@ -65,22 +73,20 @@ next_button.onclick = () => {
         questionPageNumber(question_number);
         next_button.style.display = 'none';//This will hide the next button until the correct answer is chosen
     } else {
-        console.log('Questions Completed');
+        //console.log('Questions Completed');
         showResultBox();
         clearInterval(counter);
         complete = true;
         score = time;
-        console.log(score);
+        //console.log(score);
     }
 }
-
-
 
 //Getting questions and options from the questions.js file
 //The 2 JavaScript files are linked via the index.html file
 let showQuestions = (index) => {
     const question_text = document.querySelector('.question_text');//Referencing question_text in the index.html file
-    const question_option_list = document.querySelector('.question_option_list')
+    const question_option_list = document.querySelector('.question_option_list')//Referencing the question options list
     let question_tag = '<span>'+ questions[index].question +'</span>';//Created a variable that will store the question in a html span tag
     //Adding the 4 options from the questions.js file that will have the CSS styling .option and will be housed in span tags
     let question_option_tag = '<div class="option"><span>'+ questions[index].options[0] +'</span></div>' 
@@ -108,12 +114,11 @@ let optionSelected = (answer) => {
         next_button.style.display = 'block';//Once the user selects the correct answer the next button will show
         answer.classList.add('correct')//If the answer is correct the option text will be green
         answer.insertAdjacentHTML("beforeend", tick_icon);
-        console.log('That is correct');
     } else {
         answer.classList.add('incorrect');//If the answer is incorrect the option text will be red
         answer.insertAdjacentHTML("beforeend", cross_icon);
         time -= 10;
-        console.log(typeof time);//Show if it is a number, bolean or string ect..
+        //console.log(typeof time);//Show if it is a number, bolean or string ect..
     }
 }
 
@@ -150,3 +155,26 @@ let questionPageNumber = (index) => {
     question_counter.innerHTML = question_counter_tag;
 }
 
+//Created an event listener that checks to see if the input field has been filled
+//If it has not, stop the function until there is an input
+//Else set the username and score to localStorage
+submit_button.addEventListener('click', function (e) {
+    username = input_text.value;
+    //console.log(username);
+    if (!username) {
+    return;
+} else {   
+    localStorage.setItem("username", username);
+    localStorage.setItem("totalScore", score);
+    result_box.classList.remove('active_result_box');//Hide result box
+    highscore_box.classList.add('active_highscore_box');//Show highscore box
+    hs_name.innerText = localStorage.getItem("username", username);
+    console.log(hs_name);
+    hs_score.innerText = localStorage.getItem("totalScore", score);
+    console.log(hs_score);
+  }
+});
+
+clear_button.onclick = () => {
+    localStorage.clear();
+};
