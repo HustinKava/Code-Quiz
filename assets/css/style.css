@@ -72,7 +72,8 @@ body {
 
 .information_box.active_information_box,
 .highscore_box.active_highscore_box,
-.quiz_box.active_quiz_box {
+.quiz_box.active_quiz_box,
+.result_box.active_result_box {
     z-index: 5;
     opacity: 1; /*1 becomes not transparent*/
     pointer-events: auto; /*Restores default functionality*/
@@ -355,7 +356,7 @@ footer .next_button:hover {
 }
 
 
-.buttons button.submit {
+.buttons button.submit_button {
     margin: 50px 0;
     height: 40px;
     padding: 0 13px;
@@ -367,7 +368,7 @@ footer .next_button:hover {
     cursor: pointer;
 }
 
-.buttons button.submit:hover {
+.buttons button.submit_button:hover {
     border: 1px solid #0263ca;
     color: #0263ca;
 }

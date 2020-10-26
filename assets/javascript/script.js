@@ -10,6 +10,9 @@ const next_button = quiz_box.querySelector('.next_button');
 const question_counter = quiz_box.querySelector('.total_questions');
 const time_counter = quiz_box.querySelector('.timer .timer_seconds')
 
+const result_box = document.querySelector('.result_box');
+const submit_button = document.querySelector('.buttons .submit_button')
+
 const highscore_button = document.querySelector('.highscore_button button')
 const highscore_box = document.querySelector('.highscore_box')
 
@@ -45,10 +48,12 @@ return_button.onclick = () => {
     highscore_box.classList.remove('active_highscore_box');//Hide highscore box
 }
 
+//Global variables
 let question_count = 0; //Starts at question 0 which is question 1 because we are using arrays
 let question_number = 1;//Page count starts at 1
-let counter;
-let penalty = 10;
+let counter;//Holds the timer count
+let wrong_answer;
+let time;
 
 //If Next button is clicked
 next_button.onclick = () => {
@@ -59,6 +64,9 @@ next_button.onclick = () => {
         questionPageNumber(question_number);
     } else {
         console.log('Questions Completed');
+        showResultBox();
+        clearInterval(counter);
+        console.log(counter)
     }
 }
 
@@ -90,7 +98,7 @@ let cross_icon = '<div class="icon_cross"><i class="fas fa-times"></i></div>';//
 
 //Creating a function to see if the option selected is equal to the answer or not
 let optionSelected = (answer) => {
-    let user_answer = answer.textContent;
+    user_answer = answer.textContent;
     let correct_answer = questions[question_count].answer;//Setting the answer equal to the answers located in questions.js file
     if (user_answer == correct_answer) {
         answer.classList.add('correct')//If the answer is correct the option text will be green
@@ -99,8 +107,15 @@ let optionSelected = (answer) => {
     } else {
         answer.classList.add('incorrect');//If the answer is incorrect the option text will be red
         answer.insertAdjacentHTML("beforeend", cross_icon);
-        console.log('That is wrong');
+        wrong_answer = true;
+        console.log(wrong_answer);
     }
+}
+
+let showResultBox = () => {
+    information_box.classList.remove('active_information_box');//Hide the information box
+    quiz_box.classList.remove('active_quiz_box');//Hide quiz box
+    result_box.classList.add('active_result_box');//Show result box
 }
 
 //Function to start the timer from 100 seconds
@@ -109,7 +124,14 @@ function startTimer(time) {
     function timer() {
         time_counter.textContent = time;//Timer will display in the HTML element .timer_seconds
         time--;//Timer counts backwards
-    }
+        if (time < 0) {//If time reaches zero, it will hold the value of 0
+            clearInterval(counter);
+            time_counter.textContent = 0;
+        } if (wrong_answer === true) {
+            time -= 10;            
+            console.log(time)
+        }
+    }   
 }
 
 
