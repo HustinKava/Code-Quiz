@@ -47,7 +47,7 @@ let questions = [
     {
         number: 5,
         question: 'A very useful tool that is used during development and debugging for printing content to the debugger is:',
-        answer: 'Alerts',
+        answer: 'Console log',
         options: [
             'JavaScript',
             'Terminal / Bash',
