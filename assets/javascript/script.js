@@ -168,13 +168,17 @@ submit_button.addEventListener('click', function (e) {
     localStorage.setItem("totalScore", score);
     result_box.classList.remove('active_result_box');//Hide result box
     highscore_box.classList.add('active_highscore_box');//Show highscore box
-    hs_name.innerText = localStorage.getItem("username", username);
-    console.log(hs_name);
-    hs_score.innerText = localStorage.getItem("totalScore", score);
-    console.log(hs_score);
+    hs_name.innerHTML = localStorage.getItem("username", username);
+    //console.log(hs_name);
+    hs_score.innerHTML = localStorage.getItem("totalScore", score);
+    //console.log(hs_score);
+    time = 100;//Resets the timer
+    question_count = 0;//Resets the question count 
+    question_number = 1;//Resets the question
   }
 });
 
 clear_button.onclick = () => {
-    localStorage.clear();
+    localStorage.clear();//Clears all keys and values from local storage
+    location.reload();//Resets high score display back to default
 };
