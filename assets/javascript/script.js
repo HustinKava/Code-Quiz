@@ -78,6 +78,7 @@ next_button.onclick = () => {
         clearInterval(counter);
         complete = true;
         score = time;
+        next_button.style.display = 'none';//This will hide the next button until the correct answer is chosen
         //console.log(score);
     }
 }
@@ -163,7 +164,7 @@ submit_button.addEventListener('click', function (e) {
     //console.log(username);
     if (!username) {
     return;
-} else {   
+} else {  
     localStorage.setItem("username", username);
     localStorage.setItem("totalScore", score);
     result_box.classList.remove('active_result_box');//Hide result box
@@ -175,6 +176,7 @@ submit_button.addEventListener('click', function (e) {
     time = 100;//Resets the timer
     question_count = 0;//Resets the question count 
     question_number = 1;//Resets the question
+    next_button.style.display = 'none';//This will hide the next button until the correct answer is chosen
   }
 });
 
@@ -182,3 +184,5 @@ clear_button.onclick = () => {
     localStorage.clear();//Clears all keys and values from local storage
     location.reload();//Resets high score display back to default
 };
+
+//
