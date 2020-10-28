@@ -31,6 +31,7 @@ let counter;//Holds the timer count
 let time = 100;//Hard coded the time to start from 100 seconds
 let score;//Holds the final score 
 let username;//Holds the username
+let allHighScores = [];//Object array gets pushed here
 
 
 
@@ -165,14 +166,37 @@ submit_button.addEventListener('click', function (e) {
     if (!username) {
     return;
 } else {  
-    localStorage.setItem("username", username);
-    localStorage.setItem("totalScore", score);
+
+    //Pushes 
+    allHighScores.push(
+        {
+            name: username,
+            score: score
+        }
+    );
+
+    var scoreStorage = JSON.stringify(allHighScores); //Converts the array to text
+    localStorage.setItem("allHighScores", scoreStorage);//Sets local storage with the high score values
+
+
+    // when you need to retrieve the score
+    var getScoresFromStorage = localStorage.getItem("allHighScores");//Retrieves the high score values and stores them in getScoresFromStorage
+    allHighScores = JSON.parse(getScoresFromStorage);//Data becomes a JavaScript object
+
+    // build a loop that counts through all the highScores
+    for (var i=0; i< allHighScores.length; i++){
+
+    //Adds the username and score to the HTML element    
+    hs_name.innerHTML += "<br>" + allHighScores[allHighScores.length -1].name + "<br>";
+    //console.log(hs_name);
+    hs_score.innerHTML += "<br>" + allHighScores[allHighScores.length -1].score + "<br>";
+    }
+
+    //Setting allHighScores to an empty array so that the forloop will only print the last username and score added
+    allHighScores = [];
+
     result_box.classList.remove('active_result_box');//Hide result box
     highscore_box.classList.add('active_highscore_box');//Show highscore box
-    hs_name.innerHTML = localStorage.getItem("username", username);
-    //console.log(hs_name);
-    hs_score.innerHTML = localStorage.getItem("totalScore", score);
-    //console.log(hs_score);
     time = 100;//Resets the timer
     question_count = 0;//Resets the question count 
     question_number = 1;//Resets the question
@@ -184,5 +208,3 @@ clear_button.onclick = () => {
     localStorage.clear();//Clears all keys and values from local storage
     location.reload();//Resets high score display back to default
 };
-
-//
