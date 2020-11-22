@@ -33,8 +33,6 @@ let score;//Holds the final score
 let username;//Holds the username
 let allHighScores = [];//Object array gets pushed here
 
-
-
 //If Start Quiz is clicked
 //classList.add() behaves like a toggle for css
 start_button.onclick = () => {
@@ -162,7 +160,7 @@ let questionPageNumber = (index) => {
 //Else set the username and score to localStorage
 submit_button.addEventListener('click', function (e) {
     username = input_text.value;
-    //console.log(username);
+    console.log(username);
     if (!username) {
     return;
 } else {  
