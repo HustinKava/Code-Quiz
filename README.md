@@ -8,6 +8,10 @@
 
 <p>For this homework assignment I was tasked in creating a coding quiz that incorporates HTML, CSS and JavaScript!</p>
 
+<h2>Technologies Used</h2>
+
+<p>For this assignment I used HTML, CSS, JavaScript and FontAwesome</p>
+
 <h2>How it works</h2>
 
 <p>This application is very user friendly and easy to use. User starts the quiz by clicking the "Start Quiz" button which will be followed by an information box. From here you can either click "Exit Quiz" or "Continue". 
@@ -24,10 +28,16 @@ Then the high score box will show and display the user initials and their total 
 
 <p>I found this assignment challenging but fun being able to display my visual ideas on the screen. I learned a lot and feel a little more comfortable with event listeners and selecting HTML elements with JavaScript</p>
 
-<h2>Screenshot</h2>
+<h2>Screenshots</h2>
 
 ![](/assets/images/Screenshot.PNG)
 
+![](/assets/images/Screenshot2.PNG)
+
 <p>
-To view this web application please click <a href="https://hustinkava.github.io/Code-Quiz/" rel="nofollow">here</a>
+To view this web application please click <a href="https://hustinkava.github.io/Code-Quiz/" rel="nofollow">here</a>.
+</p>
+
+<p>
+Click <a href="https://www.linkedin.com/in/hustin-kava" rel="nofollow">here</a> to connect with me on LinkedIn.
 </p>
